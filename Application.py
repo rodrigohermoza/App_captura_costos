@@ -607,7 +607,7 @@ with col_info:
 
         # Aplicar color condicional a la columna Estado
         st.dataframe(
-            df_resumen.style.applymap(colorear_estado, subset=["Estado"]),
+            df_resumen.style.map(colorear_estado, subset=["Estado"]),
             use_container_width=True,
             hide_index=True,
         )
