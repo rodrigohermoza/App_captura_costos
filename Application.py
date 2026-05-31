@@ -285,7 +285,7 @@ col_m1, col_m2, col_m3, col_m4 = st.columns(4)
 col_m1.metric("Total registros", total_registros)
 col_m2.metric("Registros hoy", registros_hoy)
 col_m3.metric("Alertas críticas", criticos_hoy)
-col_m4.metric("Archivo CSV", "Activo ✓" if os.path.exists(CSV_PATH) else "Nuevo")
+col_m4.metric("Archivo CSV", "Activo " if os.path.exists(CSV_PATH) else "Nuevo")
 
 st.divider()
 
@@ -409,7 +409,7 @@ with col_form:
         )
 
     # ── SECCIÓN 4: Costos Indirectos de Fabricación ─────────
-    with st.expander("⚙️ Costos Indirectos de Fabricación (CIF)", expanded=True):
+    with st.expander("Costos Indirectos de Fabricación (CIF)", expanded=True):
         c11, c12 = st.columns(2)
         with c11:
             tipo_cif = st.selectbox(
@@ -428,7 +428,7 @@ with col_form:
             )
 
     # ── SECCIÓN 5: Observaciones ─────────────────────────────
-    with st.expander("💬 Observaciones (opcional)"):
+    with st.expander("Observaciones (opcional)"):
         observaciones = st.text_area(
             "Notas adicionales",
             placeholder="Ej: Parada de máquina de 2 horas por mantenimiento preventivo. Lote de material con mayor impureza.",
@@ -456,7 +456,7 @@ with col_form:
     margen_pct = (utilidad_bruta / ingresos * 100) if ingresos > 0 else 0.0
 
     # ── PANEL DE RESUMEN PREVIO AL GUARDADO ─────────────────
-    st.subheader("📊 Resumen de la orden")
+    st.subheader(" Resumen de la orden")
 
     col_r1, col_r2, col_r3 = st.columns(3)
     col_r1.metric("Costo total real", f"S/ {costo_total_real:,.2f}")
@@ -482,7 +482,7 @@ with col_form:
 
     # ── BOTÓN DE GUARDADO ────────────────────────────────────
     boton_guardar = st.button(
-        "💾 Guardar registro",
+        "Guardar registro",
         type="primary",
         use_container_width=True,
         help="Valida todos los campos y guarda el registro en el CSV.",
@@ -560,7 +560,7 @@ with col_form:
 # ─────────────────────────────────────────────────────────────
 
 with col_info:
-    st.subheader("📌 Referencia de costos estándar")
+    st.subheader("Referencia de costos estándar")
 
     # Tabla de costos estándar para que el operario compare
     df_std = pd.DataFrame([
@@ -591,7 +591,7 @@ with col_info:
     st.divider()
 
     # Resumen rápido de la sesión actual
-    st.subheader("📈 Últimos registros")
+    st.subheader("Últimos registros")
 
     df_vis = st.session_state.df_registros
     if df_vis.empty:
@@ -617,7 +617,7 @@ with col_info:
 # ─────────────────────────────────────────────────────────────
 
 st.divider()
-st.subheader("🗄️ Gestión de datos")
+st.subheader("Gestión de datos")
 
 col_btn1, col_btn2, col_btn3 = st.columns([2, 2, 3])
 
