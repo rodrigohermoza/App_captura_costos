@@ -710,7 +710,7 @@ if st.session_state.mostrar_tabla:
         columnas_disponibles = [c for c in columnas_mostrar if c in df_filtrado.columns]
 
         st.dataframe(
-            df_filtrado[columnas_disponibles].style.applymap(
+            df_filtrado[columnas_disponibles].style.map(
                 colorear_estado, subset=["Estado_Varianza"]
             ),
             use_container_width=True,
